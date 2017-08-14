@@ -1,0 +1,4 @@
+pycrypto
+requests
+passlib
+beautifulsoup4
