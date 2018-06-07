@@ -39,7 +39,7 @@ elif task == "sym_decrypt":
     # Padding is a badly implemented PKCS#7 where 16 bytes padding is ignored,
     # so we have to check all previous bytes to see if it is valid.
     padding_length = data_out[-1]
-    if (padding_length < AES.block_size) && (padding_length < len(data_out)):
+    if (padding_length < AES.block_size) and (padding_length < len(data_out)):
         for i in range(0, padding_length):
             if data_out[-1 - i] != padding_length:
                 break
