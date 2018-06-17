@@ -9,7 +9,7 @@ braindead unless marked otherwise.
 
 Uses a buffer overflow in the login page to make the default user admin. Takes
 the login page as an argument. Credit to Alain Mowat (@plopz0r) for the
-exploit. Was patched in October 2015.
+exploit. Was patched in October 2015, should work with versions up to E_3.2.4.
 
 Example:
 
