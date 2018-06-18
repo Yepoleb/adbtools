@@ -38,7 +38,11 @@ def do_login(session, login_url, username, password):
     # What's the point of all of this?
     for code_num in range(1, 8):
         code_name = "code{}".format(code_num)
-        code_val = soup.find("input", attrs={"name": code_name})["value"]
+        code_elem = soup.find("input", attrs={"name": code_name})
+        if (code_elem is None):
+            break
+
+        code_val = code_elem["value"]
         # Codes can be longer than 8 characters, but the hash function does not
         # support them. This is an implementation bug in the webinterface.
         salt = code_val[:8]
@@ -81,8 +85,8 @@ def to_normal(login_url):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: {} <login url>")
-        print("Example: {} 'http://10.0.0.138/ui/login'")
+        print("Usage: {} <login url>".format(sys.argv[0]))
+        print("Example: {} 'http://10.0.0.138/ui/login'".format(sys.argv[0]))
         exit(1)
 
     login_url = sys.argv[1]
